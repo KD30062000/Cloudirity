@@ -1,0 +1,31 @@
+
+{% extends "survey_app/base.html" %}
+
+{% block title %}Survey Results{% endblock %}
+
+{% block content %}
+    <h1>{{ survey.title }} - Results</h1>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Question</th>
+                <th>Response</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for response in responses %}
+                <tr class="mb-3">
+                    <td>{{ response.question.text }}</td>
+                    <td>
+                        {% if response.text_answer %}
+                            {{ response.text_answer }}
+                        {% else %}
+                            {{ response.choice_answer.text }}
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+

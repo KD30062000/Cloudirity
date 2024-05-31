@@ -1,0 +1,21 @@
+
+{% extends "survey_app/base.html" %}
+
+{% block title %}Add Choices{% endblock %}
+
+{% block content %}
+    <h1>Add Choices to Question</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ choice_form.as_p }}
+        <button type="submit" class="btn btn-primary">Add Choice</button>
+    </form>
+    <hr>
+    <h2>Current Choices</h2>
+    <ul>
+        {% for choice in question.choices.all %}
+            <li>{{ choice.text }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
+

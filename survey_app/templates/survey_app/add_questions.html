@@ -1,0 +1,21 @@
+
+
+{% extends "survey_app/base.html" %}
+
+{% block title %}Add Questions{% endblock %}
+
+{% block content %}
+    <h1>Add Questions to Survey</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ question_form.as_p }}
+        <button type="submit" class="btn btn-primary">Add Question</button>
+    </form>
+    <hr>
+    <h2>Current Questions</h2>
+    <ul>
+        {% for question in survey.questions.all %}
+            <li>{{ question.text }} ({{ question.get_question_type_display }})</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
