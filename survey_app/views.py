@@ -221,6 +221,7 @@ def survey_results(request, survey_id):
 
 
 def survey_thanks(request, survey_id):
+    print(survey_id)
     return render(request, 'survey_app/survey_thanks.html')
 
 
